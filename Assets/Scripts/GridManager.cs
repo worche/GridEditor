@@ -24,7 +24,6 @@ public class GridManager : MonoBehaviour
 
     List<GameObject> circles;
 
-    Sprite cellSprite;
     Vector2 cellSize;
     Vector2 circleScale;
 
