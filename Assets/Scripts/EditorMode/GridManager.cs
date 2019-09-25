@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
-    [SerializeField] int minRowCol = 3;
 
-    [SerializeField] int maxRowCol = 7;
+    [Header("Rows Cols Settings")]
+    [SerializeField] int minRow = 3;
+    [SerializeField] int minCol = 3;
 
+    [SerializeField] int maxRow = 7;
+    [SerializeField] int maxCol = 7;
+
+    [Header("Start Settings")]
     [Range(3, 7)]
     [SerializeField] int startRow = 3;
 
     [Range(3, 7)]
     [SerializeField] int startCol = 7;
+
+    [SerializeField] Vector2 gridSize;
 
     [SerializeField] GameObject circlePrefab;
 
@@ -20,9 +27,10 @@ public class GridManager : MonoBehaviour
 
     int cols = 3;
 
-    [SerializeField] Vector2 gridSize;
+    
 
-    List<GameObject> circles;
+    [HideInInspector]
+    public List<GameObject> circles;
 
     Vector2 cellSize;
     Vector2 circleScale;
@@ -55,13 +63,13 @@ public class GridManager : MonoBehaviour
         gridOffset.x = -(gridSize.x / 2) + cellSize.x / 2;
         gridOffset.y = -(gridSize.y / 2) + cellSize.y / 2;
 
-
-
         for (int row = 0; row < rows; row++)
         {
             for (int col = 0; col < cols; col++)
             {
-                Vector2 pos = new Vector2(col * cellSize.x + gridOffset.x, row * cellSize.y + gridOffset.y);
+                Vector2 pos = new Vector2(
+                    col * cellSize.x + gridOffset.x+ transform.position.x, 
+                    row * cellSize.y + gridOffset.y+transform.position.y);
                 GameObject circle = Instantiate(circlePrefab, pos, Quaternion.identity, this.transform);
 
                 circle.transform.localScale = circleScale;
@@ -74,7 +82,7 @@ public class GridManager : MonoBehaviour
 
     public void RowsAdd()
     {
-        if (rows >= maxRowCol || Mathf.Abs(rows - cols) > 3)
+        if (rows >= maxRow )
             return;
 
         rows++;
@@ -82,7 +90,7 @@ public class GridManager : MonoBehaviour
     }
     public void ColsAdd()
     {
-        if (cols >= maxRowCol || Mathf.Abs(rows - cols) > 3)
+        if (cols >= maxCol )
             return;
 
         cols++;
@@ -90,7 +98,7 @@ public class GridManager : MonoBehaviour
     }
     public void ColsSub()
     {
-        if (cols <= minRowCol)
+        if (cols <= minCol)
             return;
 
         cols--;
@@ -98,7 +106,7 @@ public class GridManager : MonoBehaviour
     }
     public void RowsSub()
     {
-        if (rows <= minRowCol)
+        if (rows <= minRow)
             return;
 
         rows--;
@@ -113,6 +121,7 @@ public class GridManager : MonoBehaviour
         {
             Destroy(item);
         }
+        circles.Clear();
     }
 
     private void OnDrawGizmos()

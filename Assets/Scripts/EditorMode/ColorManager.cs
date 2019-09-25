@@ -8,9 +8,9 @@ public class ColorManager : MonoBehaviour
     Queue<Color> colorQueue;
 
     Color defaultColor;
-    [ColorUsageAttribute(true, false)] [SerializeField] Color color1;
-    [ColorUsageAttribute(true, false)] [SerializeField] Color color2;
-    [ColorUsageAttribute(true, false)] [SerializeField] Color color3;
+    [ColorUsageAttribute(true, false)] [SerializeField] Color color1=Color.white;
+    [ColorUsageAttribute(true, false)] [SerializeField] Color color2=Color.white;
+    [ColorUsageAttribute(true, false)] [SerializeField] Color color3=Color.white;
 
     Color selecterColor;
     #region Singeleton
