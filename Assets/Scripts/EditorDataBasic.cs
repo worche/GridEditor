@@ -15,6 +15,7 @@ public class EditorDataBasic
         circleId = new List<int>();
         circlePos = new List< Vector3>();
         circleColor = new List< Color>();
+        totalCircle = 0;
 
     }
 }

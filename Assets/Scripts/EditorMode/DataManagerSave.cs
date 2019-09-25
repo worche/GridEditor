@@ -15,12 +15,14 @@ public class DataManagerSave : MonoBehaviour
     {
 
         data.circlePos.Clear();
-         data.circleColor.Clear();
-         data.circleId.Clear();
+        data.circleColor.Clear();
+        data.circleId.Clear();
 
         int i = 0;
         foreach (var circle in circlesGrid.circles)
         {
+
+            //CircleStats kullanılarak bu bilgilere erişilebilirdi
             Vector3 pos = circle.transform.position;
             Color color = circle.GetComponent<SpriteRenderer>().color;
 

@@ -10,6 +10,8 @@ public class CircleStats : MonoBehaviour
     [HideInInspector]
     public Vector3 pos = Vector3.zero;
 
+    //ilerde kullanılması gerekebilir, saklamayı tercih ettim.
+
     private void Start()
     {
         pos = transform.position;

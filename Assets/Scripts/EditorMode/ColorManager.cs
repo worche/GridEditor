@@ -5,14 +5,19 @@ using UnityEngine;
 public class ColorManager : MonoBehaviour
 {
     public static ColorManager instance;
-    Queue<Color> colorQueue;
+    //seçilen renge rahat ulaşmak için instance olarak kurguladım
 
+    Queue<Color> colorQueue; // sırayla kullanmak için Queue yapısı işimizi görüyordu. List yapısından daha hızlı çalışacağı Queue kullanıldı.
+    //Kuyruk yapısını kullandık.
+
+    //editorden secilebilir
     Color defaultColor;
     [ColorUsageAttribute(true, false)] [SerializeField] Color color1=Color.white;
     [ColorUsageAttribute(true, false)] [SerializeField] Color color2=Color.white;
     [ColorUsageAttribute(true, false)] [SerializeField] Color color3=Color.white;
 
     Color selecterColor;
+
     #region Singeleton
     private void Awake()
     {

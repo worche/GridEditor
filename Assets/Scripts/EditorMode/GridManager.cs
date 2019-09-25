@@ -37,7 +37,6 @@ public class GridManager : MonoBehaviour
 
     Vector2 gridOffset;
 
-    // Use this for initialization
     void Start()
     {
         rows = startRow;
@@ -51,16 +50,18 @@ public class GridManager : MonoBehaviour
     {
         ClearCircles();
 
-        Vector2 newCellSize = new Vector2(gridSize.x / (float)cols, gridSize.y / (float)rows);
+        Vector2 newCellSize = new Vector2(gridSize.x / (float)cols, gridSize.y / (float)rows); //grid genişliğine göre hücre alanlarını hesaplar
 
-        float circleScaleMax = Mathf.Min(newCellSize.x / 1.2f, newCellSize.y / 1.2f);
+        float circleScaleMax = Mathf.Min(newCellSize.x / 1.2f, newCellSize.y / 1.2f); // hücrelerde bulunacak objelerin büyüklüklerinin  hesabı
+        //oluşan obje hücre boyutunun yüzde 80 büyüklüğünde bir scale ile oluşuyor. Bu oran değişebilir. Şuanda sabit. 
+        //objemizin x,y scalenin eşit olması gerektiği için x ve y değerlerinden küçük olanı scale'imiz kabul ediyoruz.
 
         circleScale.x = circleScaleMax;
         circleScale.y = circleScaleMax;
 
         cellSize = newCellSize;
 
-        gridOffset.x = -(gridSize.x / 2) + cellSize.x / 2;
+        gridOffset.x = -(gridSize.x / 2) + cellSize.x / 2; // grid büyüklüğümüze tam oturması offset değerini hesaplıyoruz.
         gridOffset.y = -(gridSize.y / 2) + cellSize.y / 2;
 
         for (int row = 0; row < rows; row++)
@@ -70,6 +71,8 @@ public class GridManager : MonoBehaviour
                 Vector2 pos = new Vector2(
                     col * cellSize.x + gridOffset.x+ transform.position.x, 
                     row * cellSize.y + gridOffset.y+transform.position.y);
+
+
                 GameObject circle = Instantiate(circlePrefab, pos, Quaternion.identity, this.transform);
 
                 circle.transform.localScale = circleScale;
