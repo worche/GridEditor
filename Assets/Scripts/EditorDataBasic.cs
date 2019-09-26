@@ -6,6 +6,7 @@ using UnityEngine;
 public class EditorDataBasic 
 {
     public List< Vector3> circlePos;
+    public List<Vector3> circleScale;
     public List< Color> circleColor;
     public List<int> circleId;
     public int totalCircle;

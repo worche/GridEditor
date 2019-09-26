@@ -17,6 +17,7 @@ public class DataManagerSave : MonoBehaviour
         data.circlePos.Clear();
         data.circleColor.Clear();
         data.circleId.Clear();
+        data.circleScale.Clear();
 
         int i = 0;
         foreach (var circle in circlesGrid.circles)
@@ -25,10 +26,12 @@ public class DataManagerSave : MonoBehaviour
             //CircleStats kullanılarak bu bilgilere erişilebilirdi
             Vector3 pos = circle.transform.position;
             Color color = circle.GetComponent<SpriteRenderer>().color;
+            Vector3 scale = circle.transform.localScale;
 
             data.circlePos.Add(pos);
             data.circleColor.Add(color);
             data.circleId.Add(i);
+            data.circleScale.Add(scale);
 
             i++;
         }

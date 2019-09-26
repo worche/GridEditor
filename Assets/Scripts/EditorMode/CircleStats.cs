@@ -9,12 +9,15 @@ public class CircleStats : MonoBehaviour
     public Color color = Color.white;
     [HideInInspector]
     public Vector3 pos = Vector3.zero;
+    [HideInInspector]
+    public Vector3 scale = Vector3.zero;
 
     //ilerde kullanılması gerekebilir, saklamayı tercih ettim.
 
     private void Start()
     {
         pos = transform.position;
+        scale = transform.localScale;
     }
 
     private void OnMouseDown()
